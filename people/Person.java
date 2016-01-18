@@ -1,5 +1,7 @@
 package people;
 
+import java.util.Comparator;
+
 public class Person implements Comparable<Person> {
 
 	private String givenNames;
@@ -56,8 +58,13 @@ public class Person implements Comparable<Person> {
 			return false;
 		}
 	}
-	
-	
-	
 
+	public static Comparator<Person> givenNameComparator() {
+		return new Comparator<Person>() {
+			@Override
+			public int compare(Person p1, Person p2) {
+				return p1.givenNames.compareTo(p2.givenNames);
+			}
+		};
+	}
 }
